@@ -5,7 +5,9 @@ Install via normal download
 after that install update conda:
 
 ````
-conda update -n base conda
+conda update conda
+conda update anaconda-navigator
+conda update navigator-updater
 ````
 
 then update spyder
