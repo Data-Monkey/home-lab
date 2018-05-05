@@ -20,6 +20,5 @@ stil lcant get basemap to work .....
 Basemap will be repalced by CartoPy by 2020 so I might as well start there 
 
 ````
-conda install partupy
+conda install partopy
 ````
-
