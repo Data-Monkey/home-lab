@@ -9,3 +9,4 @@ https://opendata.transport.nsw.gov.au/
 To import the data into a NetworkX graph I used the work of @paulgb as inspiration.
 https://github.com/paulgb/gtfs-gexf
 
+still work in progress
