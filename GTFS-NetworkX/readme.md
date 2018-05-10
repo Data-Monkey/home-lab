@@ -10,3 +10,4 @@ To import the data into a NetworkX graph I used the work of @paulgb as inspirati
 https://github.com/paulgb/gtfs-gexf
 
 still work in progress
+![Map of the Network](./images/map-plot.png)
