@@ -3,7 +3,8 @@ To have a network to play with I decided to draw the Sydney Train network on a m
 
 ### This Script
 This script reads standard **[GTFS]** files and adds them to a [NetworkX] graph.<br>
-That graph can then be used to analyse the data or plot the network.
+That graph can then be used to analyse the data or plot the network. <BR>
+I only tested it on the Sydney Transport data, but it should work on all GTFS packages.
 
 ### NSW Transport
 Transport NSW makes its timetable availabe in the Google [GTFS] format.<br>
