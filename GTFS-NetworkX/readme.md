@@ -1,13 +1,25 @@
-I wanted to experiment with NetworkX and maps.
+I wanted to experiment with **[NetworkX]** and maps.<br>
 To have a network to play with I decided to draw the Sydney Train network on a map.
 
-Transport NSW makes its timetable availabe in the google GTFS format.
-A set of files can be downloaded from their open data portal.
+### This Script
+This script reads standard **[GTFS]** files and adds them to a [NetworkX] graph.<br>
+That graph can then be used to analyse the data or plot the network.
 
-https://opendata.transport.nsw.gov.au/
+### NSW Transport
+Transport NSW makes its timetable availabe in the Google [GTFS] format.<br>
+A set of files can be downloaded from their [open data portal].
 
-To import the data into a NetworkX graph I used the work of @paulgb as inspiration.
+### Inspiration
+To import the data into a NetworkX graph I used the work of **[paulgb]** as inspiration.
 https://github.com/paulgb/gtfs-gexf
 
+### Result
 still work in progress
 ![Map of the Network](./images/map-plot.png)
+
+
+
+[GTFS]: https://developers.google.com/transit/gtfs/reference/
+[open data portal]:https://opendata.transport.nsw.gov.au/
+[paulgb]:https://github.com/paulgb/
+[NetworkX]:https://networkx.github.io/
