@@ -96,7 +96,7 @@ class Dot:
         if self.reached_goal:
             #self.fitness = 1.0/16.0 
             self.fitness = 1.0/160.0 + 10000.00/float(self.step**2);
-            print(f'steps {self.step} / fitness {self.fitness}')
+            print(f'steps {self.step} / fitness {self.fitness*1000}')
         else:
             dist = self._distance(self.posXY, TARGET_XY)
             if dist == 0.0:
@@ -104,7 +104,7 @@ class Dot:
             else:
                 self.fitness = 1.00 / (dist**2)
             
-            print(f'distance {dist} / fitness {float(self.fitness)} / steps {self.step}')
+            print(f'distance {dist} / fitness {float(self.fitness*1000)} / steps {self.step}')
         return self.fitness
     
     def alive(self):
@@ -183,11 +183,12 @@ class Population:
         return best
 
     def select_parent(self):
-        rand = random.uniform(0,self.total_fitness)
+        multiplier = 100000
+        rand = random.randint(0,int(self.total_fitness*multiplier))
         
-        running_sum =0.000        
+        running_sum = 0.000        
         for dot in self.dots:
-            running_sum += dot.fitness
+            running_sum += (dot.fitness*multiplier)
             if running_sum > rand:
                 return dot.clone()
         
@@ -201,7 +202,7 @@ screen = pygame.display.set_mode(size)
 
 pop = Population(POPULATION_SIZE)
 
-for i in range(5) : 
+for i in range(2) : 
 # let evolution do its work
 
     
