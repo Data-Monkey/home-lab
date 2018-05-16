@@ -20,11 +20,11 @@ TRIPS_FILE = f'{DATA_ROOT}trips.txt'
 ROUTES_FILE = f'{DATA_ROOT}routes.txt'
 STOPS_FILE = f'{DATA_ROOT}stops.txt'
 
-INCLUDE_AGENCIES=['SydneyTrains']
+INCLUDE_AGENCIES=['NSWTrainLink']
 
 IGNORE_ROUTE=['RTTA_DEF', #out of service
-              'RTTA_REV'  #revenue train (charter)
-              ]
+              'RTTA_REV',  #revenue train (charter)
+              'BL_1b','BL_1c','BL_1d','BL_1e']
 
 G = nx.MultiGraph()
 
@@ -58,8 +58,20 @@ def add_stop_to_graph(G, stop_id):
     return G
 
 def add_edge_to_graph(G, from_id, to_id, route_short_name):
-    G.add_edge(get_stop_id(from_id), get_stop_id(to_id), key=route_short_name)
-
+    """ add edge to graph 
+        adding the route short name as a key
+        if the edge and key exist, increment the count
+    """
+    edge = G.get_edge_data(get_stop_id(from_id), get_stop_id(to_id),route_short_name, default = 0)
+    if edge == 0:
+        G.add_edge(get_stop_id(from_id), get_stop_id(to_id), 
+                   key=route_short_name,
+                   count=1)
+    else:
+        G.add_edge(get_stop_id(from_id), get_stop_id(to_id), 
+                   key=route_short_name,
+                   count=edge['count']+1)
+            
 
 def load_routes(filename):
     """ include only routes from agencies we are interested in
@@ -158,9 +170,9 @@ fig = plt.figure(figsize=(20,20))
 ax = plt.axes(projection=ccrs.PlateCarree()) #central_longitude=151
 #ax.set_extent((150, 155, -35, -32))
 
-nx.draw_networkx_nodes(G, ax=ax
-##,
-                 ,labels=labels
+nx.draw_networkx(G
+                 ,ax=ax
+#                 ,labels=labels
                  ,pos=pos
                  ,node_size=2
                  ,transform=data_crs
