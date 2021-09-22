@@ -1,6 +1,8 @@
-select distinct ?pers ?persLabel ?orgLabel where {
+select distinct ?pers ?persLabel ?genderLabel ?orgLabel 
+where {
     ?pers wdt:P31 wd:Q5.  # Any instance of a human.
 #    ?pers wdt:P27 wd:Q408.  # Australian
+    optional {?pers wdt:P21 ?gender.}
     ?pers p:P39 ?positions.
     ?positions ps:P39 wd:Q484876. # Position is CEO
     ?positions pq:P642 ?org.
@@ -11,3 +13,4 @@ select distinct ?pers ?persLabel ?orgLabel where {
 }
 order by ?orgLabel
 limit 200
+
